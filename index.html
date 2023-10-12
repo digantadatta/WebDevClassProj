@@ -5,11 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Class Projects List</title>
     <style>
+        /* Styles for the loader page */
+        .loader-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0078d4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .loader {
+            border: 8px solid #f3f3f3; /* Light gray */
+            border-top: 8px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Styles for the main content */
         body {
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
             margin: 0;
             padding: 0;
+            overflow: hidden; /* Prevent scrolling while loader is displayed */
         }
         
         header {
@@ -50,6 +80,9 @@
     </style>
 </head>
 <body>
+    <div class="loader-container">
+        <div class="loader"></div>
+    </div>
     <header>
         <h1>WebDev Projects List</h1>
     </header>
@@ -65,7 +98,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><a href="projects\whack_a_mole\mole.html">Whaack A Mole</a></td>
+                    <td><a href="projects\whack_a_mole\mole.html">Whack A Mole</a></td>
                     <td>Diganta Datta</td>
                     <td>500116865</td>
                     <td>Batch B2</td>
@@ -86,5 +119,12 @@
             </tbody>
         </table>
     </div>
+    <script>
+        // Hide the loader and show the main content after a delay (simulating loading time)
+        setTimeout(function() {
+            document.querySelector('.loader-container').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }, 2000); // You can adjust the delay as needed
+    </script>
 </body>
 </html>
