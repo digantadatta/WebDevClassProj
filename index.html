@@ -41,6 +41,12 @@
             padding: 0;
             overflow-x: hidden;
             color: #fff; /* Text color */
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.light-mode {
+            background-color: #fff;
+            color: #02b2f7;
         }
 
         header {
@@ -59,9 +65,9 @@
             max-width: 100%;
             margin: 20px;
             padding: 20px;
-            background-color: #2e3d49; /* Dark blue */
+            background-color: #235680; /* Dark blue */
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(251, 8, 8, 0.1);
         }
 
         table {
@@ -80,6 +86,18 @@
             color: #fff;
         }
 
+        /* Dark mode/light mode button styles */
+        .dark-light-button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            color: #fff;
+        }
+
         /* Responsive design using media queries */
         @media screen and (max-width: 768px) {
             .container {
@@ -89,13 +107,14 @@
         }
     </style>
 </head>
-<body>
+<body class="dark-mode">
     <div class="loader-container">
         <div class="loader"></div>
     </div>
     <header>
         <h1>WebDev Projects List</h1>
     </header>
+    <button class="dark-light-button" onclick="toggleDarkMode()">🌙</button>
     <div class="container">
         <table>
             <thead>
@@ -113,7 +132,7 @@
                     <td>500116865</td>
                     <td>Batch B2</td>
                 </tr>
-                
+              
                 <!-- Add more projects and contributors as needed -->
             </tbody>
         </table>
@@ -124,6 +143,11 @@
             document.querySelector('.loader-container').style.display = 'none';
             document.body.style.overflow = 'auto'; // Re-enable scrolling
         }, 2000); // You can adjust the delay as needed
+
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('light-mode');
+        }
     </script>
 </body>
 </html>
